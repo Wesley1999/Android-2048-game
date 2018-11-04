@@ -1,6 +1,5 @@
 package com.wangshaogang.android10;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,6 +15,9 @@ import java.util.Random;
 
 public class Move {
     static int change;
+    static int score;
+    static View viewBeforeChange;
+
     public static void doMove(View view, int orientation) {
 
         change = 0;
@@ -37,7 +39,8 @@ public class Move {
         TextView t43 = (TextView) view.findViewById(R.id.t43);
         TextView t44 = (TextView) view.findViewById(R.id.t44);
 
-        List<TextView> textViews = new ArrayList<TextView>();
+        List<TextView> textViews = new ArrayList<>();
+
         textViews.add((TextView) view.findViewById(R.id.t11));
         textViews.add(t12);
         textViews.add(t13);
@@ -55,7 +58,6 @@ public class Move {
         textViews.add(t43);
         textViews.add(t44);
 
-
         for (TextView textView : textViews) {
             if (textView.getText().equals("")) {
                 textView.setText("0");
@@ -63,7 +65,7 @@ public class Move {
         }
 //
 
-        Map<TextView, Integer> blocks = new HashMap<TextView, Integer>();
+        Map<TextView, Integer> blocks = new HashMap<>();
         blocks.put(t11, Integer.valueOf(t11.getText().toString()));
         blocks.put(t12, Integer.valueOf(t12.getText().toString()));
         blocks.put(t13, Integer.valueOf(t13.getText().toString()));
@@ -145,65 +147,64 @@ public class Move {
 
             case 't':
                 beforeMove(t11, t21, t31, t41, blocks);
-                doAdd(t21, t11, blocks);
+                doAdd(t11, t21, blocks);
                 beforeMove(t11, t21, t31, t41, blocks);
-                doAdd(t31, t21, blocks);
+                doAdd(t21, t31, blocks);
                 beforeMove(t11, t21, t31, t41, blocks);
-                doAdd(t41, t31, blocks);
+                doAdd(t31, t41, blocks);
 
                 beforeMove(t12, t22, t32, t42, blocks);
-                doAdd(t22, t12, blocks);
+                doAdd(t12, t22, blocks);
                 beforeMove(t12, t22, t32, t42, blocks);
-                doAdd(t32, t22, blocks);
+                doAdd(t22, t32, blocks);
                 beforeMove(t12, t22, t32, t42, blocks);
-                doAdd(t42, t32, blocks);
+                doAdd(t32, t42, blocks);
 
                 beforeMove(t13, t23, t33, t43, blocks);
-                doAdd(t23, t13, blocks);
+                doAdd(t13, t23, blocks);
                 beforeMove(t13, t23, t33, t43, blocks);
-                doAdd(t33, t23, blocks);
+                doAdd(t23, t33, blocks);
                 beforeMove(t13, t23, t33, t43, blocks);
-                doAdd(t43, t33, blocks);
+                doAdd(t33, t43, blocks);
 
                 beforeMove(t14, t24, t34, t44, blocks);
-                doAdd(t24, t14, blocks);
+                doAdd(t14, t24, blocks);
                 beforeMove(t14, t24, t34, t44, blocks);
-                doAdd(t34, t24, blocks);
+                doAdd(t24, t34, blocks);
                 beforeMove(t14, t24, t34, t44, blocks);
-                doAdd(t44, t34, blocks);
+                doAdd(t34, t44, blocks);
                 break;
 
             case 'b':
                 beforeMove(t41, t31, t21, t11, blocks);
-                doAdd(t31, t41, blocks);
+                doAdd(t41, t31, blocks);
                 beforeMove(t41, t31, t21, t11, blocks);
-                doAdd(t21, t31, blocks);
+                doAdd(t31, t21, blocks);
                 beforeMove(t41, t31, t21, t11, blocks);
-                doAdd(t11, t21, blocks);
+                doAdd(t21, t11, blocks);
 
                 beforeMove(t42, t32, t22, t12, blocks);
-                doAdd(t32, t42, blocks);
+                doAdd(t42, t32, blocks);
                 beforeMove(t42, t32, t22, t12, blocks);
-                doAdd(t22, t32, blocks);
+                doAdd(t32, t22, blocks);
                 beforeMove(t42, t32, t22, t12, blocks);
-                doAdd(t12, t22, blocks);
+                doAdd(t22, t12, blocks);
 
                 beforeMove(t43, t33, t23, t13, blocks);
-                doAdd(t33, t43, blocks);
+                doAdd(t43, t33, blocks);
                 beforeMove(t43, t33, t23, t13, blocks);
-                doAdd(t23, t33, blocks);
+                doAdd(t33, t23, blocks);
                 beforeMove(t43, t33, t23, t13, blocks);
-                doAdd(t13, t23, blocks);
+                doAdd(t23, t13, blocks);
 
                 beforeMove(t44, t34, t24, t14, blocks);
-                doAdd(t34, t44, blocks);
+                doAdd(t44, t34, blocks);
                 beforeMove(t44, t34, t24, t14, blocks);
-                doAdd(t24, t34, blocks);
+                doAdd(t34, t24, blocks);
                 beforeMove(t44, t34, t24, t14, blocks);
-                doAdd(t14, t24, blocks);
+                doAdd(t24, t14, blocks);
             default:
                 break;
-
         }
 
 
@@ -215,10 +216,11 @@ public class Move {
             }
         }
 
+        ((TextView)view.findViewById(R.id.score)).setText("Score: " + score);
+        Color.setColor(textViews);
+
         if (change==0) {
             return;
-        } else {
-            Log.d("TAG", "change=" + change);
         }
 
         List<TextView> textViews0 = new ArrayList<TextView>();
@@ -229,7 +231,10 @@ public class Move {
         }
         Random random = new Random();
         int r = random.nextInt(textViews0.size());
-        textViews0.get(r).setText("2");
+        int n = (random.nextDouble()%1>0.1?2:4);
+        textViews0.get(r).setText(n+ "");
+
+        Color.setColor(textViews);
 
     }
 
@@ -259,10 +264,11 @@ public class Move {
 
     // 把第二个参数加到第一个参数，然后第二个参数置零
     static void doAdd(TextView t1, TextView t2, Map<TextView, Integer> blocks) {
-        if (blocks.get(t1) == blocks.get(t2)) {
+        if (blocks.get(t1).equals(blocks.get(t2)) && blocks.get(t1)!=0 && blocks.get(t2) != 0) {
             blocks.put(t1, blocks.get(t1) + blocks.get(t2));
             blocks.put(t2, 0);
             change ++;
+            score += blocks.get(t1);
         }
     }
 
