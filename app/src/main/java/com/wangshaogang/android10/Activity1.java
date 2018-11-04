@@ -47,7 +47,7 @@ public class Activity1 extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(Activity1.this, "由于我没有对数据进行持久化，按Back键退出程序会丢失所有数据，所以我重写了Back键的功能，要退出请从多任务出后关闭，见谅🤪。", Toast.LENGTH_LONG).show();
+        Toast.makeText(Activity1.this, "由于我没有对数据进行持久化，按Back键退出程序会丢失所有数据，所以我重写了Back键的功能，要退出请从多任务关闭，见谅🤪。", Toast.LENGTH_LONG).show();
     }
 
 
