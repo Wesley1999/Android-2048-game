@@ -17,6 +17,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
         <TextView
             android:id="@+id/t12"
@@ -24,6 +25,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
         <TextView
             android:id="@+id/t13"
@@ -31,6 +33,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
         <TextView
             android:id="@+id/t14"
@@ -38,6 +41,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
     </LinearLayout>
 
@@ -53,6 +57,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
         <TextView
             android:id="@+id/t22"
@@ -60,13 +65,15 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
-            android:text="0" />
+            android:textSize="40sp"
+            android:text="" />
         <TextView
             android:id="@+id/t23"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
         <TextView
             android:id="@+id/t24"
@@ -74,6 +81,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
     </LinearLayout>
 
@@ -89,13 +97,15 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
-            android:text="0" />
+            android:textSize="40sp"
+            android:text="" />
         <TextView
             android:id="@+id/t32"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
         <TextView
             android:id="@+id/t33"
@@ -103,13 +113,15 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
-            android:text="0" />
+            android:textSize="40sp"
+            android:text="" />
         <TextView
             android:id="@+id/t34"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
     </LinearLayout>
 
@@ -125,13 +137,15 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
-            android:text="0" />
+            android:textSize="40sp"
+            android:text="" />
         <TextView
             android:id="@+id/t42"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
         <TextView
             android:id="@+id/t43"
@@ -139,6 +153,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
+            android:textSize="40sp"
             android:text="2" />
         <TextView
             android:id="@+id/t44"
@@ -146,7 +161,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_height="match_parent"
-            android:text="0" />
+            android:textSize="40sp"
+            android:text="" />
     </LinearLayout>
 
 

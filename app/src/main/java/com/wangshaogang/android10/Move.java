@@ -1,17 +1,25 @@
 package com.wangshaogang.android10;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by 王少刚 on 2018/11/4.
  */
 
 public class Move {
+    static int change;
     public static void doMove(View view, int orientation) {
+
+        change = 0;
+
         TextView t11 = (TextView) view.findViewById(R.id.t11);
         TextView t12 = (TextView) view.findViewById(R.id.t12);
         TextView t13 = (TextView) view.findViewById(R.id.t13);
@@ -28,6 +36,32 @@ public class Move {
         TextView t42 = (TextView) view.findViewById(R.id.t42);
         TextView t43 = (TextView) view.findViewById(R.id.t43);
         TextView t44 = (TextView) view.findViewById(R.id.t44);
+
+        List<TextView> textViews = new ArrayList<TextView>();
+        textViews.add((TextView) view.findViewById(R.id.t11));
+        textViews.add(t12);
+        textViews.add(t13);
+        textViews.add(t14);
+        textViews.add(t21);
+        textViews.add(t22);
+        textViews.add(t23);
+        textViews.add(t24);
+        textViews.add(t31);
+        textViews.add(t32);
+        textViews.add(t33);
+        textViews.add(t34);
+        textViews.add(t41);
+        textViews.add(t42);
+        textViews.add(t43);
+        textViews.add(t44);
+
+
+        for (TextView textView : textViews) {
+            if (textView.getText().equals("")) {
+                textView.setText("0");
+            }
+        }
+//
 
         Map<TextView, Integer> blocks = new HashMap<TextView, Integer>();
         blocks.put(t11, Integer.valueOf(t11.getText().toString()));
@@ -47,6 +81,7 @@ public class Move {
         blocks.put(t43, Integer.valueOf(t43.getText().toString()));
         blocks.put(t44, Integer.valueOf(t44.getText().toString()));
 
+
         switch (orientation) {
             case 'l':
                 beforeMove(t11, t12, t13, t14, blocks);
@@ -65,9 +100,9 @@ public class Move {
 
                 beforeMove(t31, t32, t33, t34, blocks);
                 doAdd(t31, t32, blocks);
-                beforeMove(t11, t12, t13, t14, blocks);
+                beforeMove(t31, t32, t33, t34, blocks);
                 doAdd(t32, t33, blocks);
-                beforeMove(t11, t12, t13, t14, blocks);
+                beforeMove(t31, t32, t33, t34, blocks);
                 doAdd(t33, t34, blocks);
 
                 beforeMove(t41, t42, t43, t44, blocks);
@@ -172,32 +207,39 @@ public class Move {
         }
 
 
+        for (TextView textView : textViews) {
+            if (blocks.get(textView) == 0) {
+                textView.setText("");
+            } else {
+                textView.setText(blocks.get(textView) + "");
+            }
+        }
 
-        t11.setText(blocks.get(t11) + "");
-        t12.setText(blocks.get(t12) + "");
-        t13.setText(blocks.get(t13) + "");
-        t14.setText(blocks.get(t14) + "");
+        if (change==0) {
+            return;
+        } else {
+            Log.d("TAG", "change=" + change);
+        }
 
-        t21.setText(blocks.get(t21) + "");
-        t22.setText(blocks.get(t22) + "");
-        t23.setText(blocks.get(t23) + "");
-        t24.setText(blocks.get(t24) + "");
-
-        t31.setText(blocks.get(t31) + "");
-        t32.setText(blocks.get(t32) + "");
-        t33.setText(blocks.get(t33) + "");
-        t34.setText(blocks.get(t34) + "");
-
-        t41.setText(blocks.get(t41) + "");
-        t42.setText(blocks.get(t42) + "");
-        t43.setText(blocks.get(t43) + "");
-        t44.setText(blocks.get(t44) + "");
-
+        List<TextView> textViews0 = new ArrayList<TextView>();
+        for (TextView textView: textViews) {
+            if (textView.getText().equals("")) {
+                textViews0.add(textView);
+            }
+        }
+        Random random = new Random();
+        int r = random.nextInt(textViews0.size());
+        textViews0.get(r).setText("2");
 
     }
 
     // 向第一个参数对齐
     static void beforeMove(TextView t1, TextView t2, TextView t3, TextView t4, Map<TextView, Integer> blocks) {
+        if (blocks.get(t1)==0&&(blocks.get(t2)!=0||blocks.get(t3)!=0||blocks.get(t4)!=0)||
+                blocks.get(t2)==0&&(blocks.get(t3)!=0||blocks.get(t4)!=0)||
+                blocks.get(t3)==0&&blocks.get(t4)!=0) {
+            change ++;
+        }
         if (blocks.get(t3) == 0) {
             blocks.put(t3, blocks.get(t4));
             blocks.put(t4, 0);
@@ -220,6 +262,7 @@ public class Move {
         if (blocks.get(t1) == blocks.get(t2)) {
             blocks.put(t1, blocks.get(t1) + blocks.get(t2));
             blocks.put(t2, 0);
+            change ++;
         }
     }
 
