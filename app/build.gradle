@@ -7,8 +7,8 @@ android {
         applicationId "com.wangshaogang.my2048Game"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 9999
-        versionName ": 不会再更新了，垃圾游戏毁我青春"
+        versionCode 10000
+        versionName ": 真香"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

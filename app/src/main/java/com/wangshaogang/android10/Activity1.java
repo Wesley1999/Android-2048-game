@@ -35,6 +35,7 @@ public class Activity1 extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.restart:
                 Intent intent = new Intent(Activity1.this, Activity1.class);
+                Move.score = 0;
                 startActivity(intent);
                 finish();
                 break;
