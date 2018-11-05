@@ -12,7 +12,7 @@
     <color name="c32bg">#F77B5F</color>
     <color name="c64bg">#E95937</color>
     <color name="c128bg">#ffe083</color>
-    <color name="c256bg">#F2D04B</color>
+    <color name="c256bg">#f5d867</color>
     <color name="c512bg">#E1BE4C</color>
     <color name="c1024bg">#ECC402</color>
     <color name="c2048bg">#E3BA14</color>
@@ -21,8 +21,5 @@
     <color name="c16384bg">#E9383B</color>
     <color name="c32768bg">#6BADCD</color>
     <color name="c65536bg">#589AD7</color>
-
-
-
 
 </resources>

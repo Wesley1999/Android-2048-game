@@ -16,193 +16,63 @@ import java.util.Random;
 public class Move {
     static int change;
     static int score;
-    static View viewBeforeChange;
 
     public static void doMove(View view, int orientation) {
 
         change = 0;
 
-        TextView t11 = (TextView) view.findViewById(R.id.t11);
-        TextView t12 = (TextView) view.findViewById(R.id.t12);
-        TextView t13 = (TextView) view.findViewById(R.id.t13);
-        TextView t14 = (TextView) view.findViewById(R.id.t14);
-        TextView t21 = (TextView) view.findViewById(R.id.t21);
-        TextView t22 = (TextView) view.findViewById(R.id.t22);
-        TextView t23 = (TextView) view.findViewById(R.id.t23);
-        TextView t24 = (TextView) view.findViewById(R.id.t24);
-        TextView t31 = (TextView) view.findViewById(R.id.t31);
-        TextView t32 = (TextView) view.findViewById(R.id.t32);
-        TextView t33 = (TextView) view.findViewById(R.id.t33);
-        TextView t34 = (TextView) view.findViewById(R.id.t34);
-        TextView t41 = (TextView) view.findViewById(R.id.t41);
-        TextView t42 = (TextView) view.findViewById(R.id.t42);
-        TextView t43 = (TextView) view.findViewById(R.id.t43);
-        TextView t44 = (TextView) view.findViewById(R.id.t44);
-
         List<TextView> textViews = new ArrayList<>();
 
         textViews.add((TextView) view.findViewById(R.id.t11));
-        textViews.add(t12);
-        textViews.add(t13);
-        textViews.add(t14);
-        textViews.add(t21);
-        textViews.add(t22);
-        textViews.add(t23);
-        textViews.add(t24);
-        textViews.add(t31);
-        textViews.add(t32);
-        textViews.add(t33);
-        textViews.add(t34);
-        textViews.add(t41);
-        textViews.add(t42);
-        textViews.add(t43);
-        textViews.add(t44);
+        textViews.add((TextView) view.findViewById(R.id.t12));
+        textViews.add((TextView) view.findViewById(R.id.t13));
+        textViews.add((TextView) view.findViewById(R.id.t14));
+        textViews.add((TextView) view.findViewById(R.id.t21));
+        textViews.add((TextView) view.findViewById(R.id.t22));
+        textViews.add((TextView) view.findViewById(R.id.t23));
+        textViews.add((TextView) view.findViewById(R.id.t24));
+        textViews.add((TextView) view.findViewById(R.id.t31));
+        textViews.add((TextView) view.findViewById(R.id.t32));
+        textViews.add((TextView) view.findViewById(R.id.t33));
+        textViews.add((TextView) view.findViewById(R.id.t34));
+        textViews.add((TextView) view.findViewById(R.id.t41));
+        textViews.add((TextView) view.findViewById(R.id.t42));
+        textViews.add((TextView) view.findViewById(R.id.t43));
+        textViews.add((TextView) view.findViewById(R.id.t44));
+
+        Map<TextView, Integer> blocks = new HashMap<>();
 
         for (TextView textView : textViews) {
             if (textView.getText().equals("")) {
                 textView.setText("0");
             }
+            blocks.put(textView, Integer.valueOf(textView.getText().toString()));
         }
-//
-
-        Map<TextView, Integer> blocks = new HashMap<>();
-        blocks.put(t11, Integer.valueOf(t11.getText().toString()));
-        blocks.put(t12, Integer.valueOf(t12.getText().toString()));
-        blocks.put(t13, Integer.valueOf(t13.getText().toString()));
-        blocks.put(t14, Integer.valueOf(t14.getText().toString()));
-        blocks.put(t21, Integer.valueOf(t21.getText().toString()));
-        blocks.put(t22, Integer.valueOf(t22.getText().toString()));
-        blocks.put(t23, Integer.valueOf(t23.getText().toString()));
-        blocks.put(t24, Integer.valueOf(t24.getText().toString()));
-        blocks.put(t31, Integer.valueOf(t31.getText().toString()));
-        blocks.put(t32, Integer.valueOf(t32.getText().toString()));
-        blocks.put(t33, Integer.valueOf(t33.getText().toString()));
-        blocks.put(t34, Integer.valueOf(t34.getText().toString()));
-        blocks.put(t41, Integer.valueOf(t41.getText().toString()));
-        blocks.put(t42, Integer.valueOf(t42.getText().toString()));
-        blocks.put(t43, Integer.valueOf(t43.getText().toString()));
-        blocks.put(t44, Integer.valueOf(t44.getText().toString()));
-
 
         switch (orientation) {
             case 'l':
-                beforeMove(t11, t12, t13, t14, blocks);
-                doAdd(t11, t12, blocks);
-                beforeMove(t11, t12, t13, t14, blocks);
-                doAdd(t12, t13, blocks);
-                beforeMove(t11, t12, t13, t14, blocks);
-                doAdd(t13, t14, blocks);
-
-                beforeMove(t21, t22, t23, t24, blocks);
-                doAdd(t21, t22, blocks);
-                beforeMove(t21, t22, t23, t24, blocks);
-                doAdd(t22, t23, blocks);
-                beforeMove(t21, t22, t23, t24, blocks);
-                doAdd(t23, t24, blocks);
-
-                beforeMove(t31, t32, t33, t34, blocks);
-                doAdd(t31, t32, blocks);
-                beforeMove(t31, t32, t33, t34, blocks);
-                doAdd(t32, t33, blocks);
-                beforeMove(t31, t32, t33, t34, blocks);
-                doAdd(t33, t34, blocks);
-
-                beforeMove(t41, t42, t43, t44, blocks);
-                doAdd(t41, t42, blocks);
-                beforeMove(t41, t42, t43, t44, blocks);
-                doAdd(t42, t43, blocks);
-                beforeMove(t41, t42, t43, t44, blocks);
-                doAdd(t43, t44, blocks);
+                doAll(textViews.get(0), textViews.get(1), textViews.get(2), textViews.get(3),
+                        textViews.get(4), textViews.get(5), textViews.get(6), textViews.get(7),
+                        textViews.get(8), textViews.get(9), textViews.get(10), textViews.get(11),
+                        textViews.get(12), textViews.get(13), textViews.get(14), textViews.get(15), blocks);
                 break;
-
             case 'r':
-                beforeMove(t14, t13, t12, t11, blocks);
-                doAdd(t14, t13, blocks);
-                beforeMove(t14, t13, t12, t11, blocks);
-                doAdd(t13, t12, blocks);
-                beforeMove(t14, t13, t12, t11, blocks);
-                doAdd(t12, t11, blocks);
-
-                beforeMove(t24, t23, t22, t21, blocks);
-                doAdd(t24, t23, blocks);
-                beforeMove(t24, t23, t22, t21, blocks);
-                doAdd(t23, t22, blocks);
-                beforeMove(t24, t23, t22, t21, blocks);
-                doAdd(t22, t21, blocks);
-
-                beforeMove(t34, t33, t32, t31, blocks);
-                doAdd(t34, t33, blocks);
-                beforeMove(t34, t33, t32, t31, blocks);
-                doAdd(t33, t32, blocks);
-                beforeMove(t34, t33, t32, t31, blocks);
-                doAdd(t32, t31, blocks);
-
-                beforeMove(t44, t43, t42, t41, blocks);
-                doAdd(t44, t43, blocks);
-                beforeMove(t44, t43, t42, t41, blocks);
-                doAdd(t43, t42, blocks);
-                beforeMove(t44, t43, t42, t41, blocks);
-                doAdd(t42, t41, blocks);
+                doAll(textViews.get(3), textViews.get(2), textViews.get(1), textViews.get(0),
+                        textViews.get(7), textViews.get(6), textViews.get(5), textViews.get(4),
+                        textViews.get(11), textViews.get(10), textViews.get(9), textViews.get(8),
+                        textViews.get(15), textViews.get(14), textViews.get(13), textViews.get(12), blocks);
                 break;
-
             case 't':
-                beforeMove(t11, t21, t31, t41, blocks);
-                doAdd(t11, t21, blocks);
-                beforeMove(t11, t21, t31, t41, blocks);
-                doAdd(t21, t31, blocks);
-                beforeMove(t11, t21, t31, t41, blocks);
-                doAdd(t31, t41, blocks);
-
-                beforeMove(t12, t22, t32, t42, blocks);
-                doAdd(t12, t22, blocks);
-                beforeMove(t12, t22, t32, t42, blocks);
-                doAdd(t22, t32, blocks);
-                beforeMove(t12, t22, t32, t42, blocks);
-                doAdd(t32, t42, blocks);
-
-                beforeMove(t13, t23, t33, t43, blocks);
-                doAdd(t13, t23, blocks);
-                beforeMove(t13, t23, t33, t43, blocks);
-                doAdd(t23, t33, blocks);
-                beforeMove(t13, t23, t33, t43, blocks);
-                doAdd(t33, t43, blocks);
-
-                beforeMove(t14, t24, t34, t44, blocks);
-                doAdd(t14, t24, blocks);
-                beforeMove(t14, t24, t34, t44, blocks);
-                doAdd(t24, t34, blocks);
-                beforeMove(t14, t24, t34, t44, blocks);
-                doAdd(t34, t44, blocks);
+                doAll(textViews.get(0), textViews.get(4), textViews.get(8), textViews.get(12),
+                        textViews.get(1), textViews.get(5), textViews.get(9), textViews.get(13),
+                        textViews.get(2), textViews.get(6), textViews.get(10), textViews.get(14),
+                        textViews.get(3), textViews.get(7), textViews.get(11), textViews.get(15), blocks);
                 break;
-
             case 'b':
-                beforeMove(t41, t31, t21, t11, blocks);
-                doAdd(t41, t31, blocks);
-                beforeMove(t41, t31, t21, t11, blocks);
-                doAdd(t31, t21, blocks);
-                beforeMove(t41, t31, t21, t11, blocks);
-                doAdd(t21, t11, blocks);
-
-                beforeMove(t42, t32, t22, t12, blocks);
-                doAdd(t42, t32, blocks);
-                beforeMove(t42, t32, t22, t12, blocks);
-                doAdd(t32, t22, blocks);
-                beforeMove(t42, t32, t22, t12, blocks);
-                doAdd(t22, t12, blocks);
-
-                beforeMove(t43, t33, t23, t13, blocks);
-                doAdd(t43, t33, blocks);
-                beforeMove(t43, t33, t23, t13, blocks);
-                doAdd(t33, t23, blocks);
-                beforeMove(t43, t33, t23, t13, blocks);
-                doAdd(t23, t13, blocks);
-
-                beforeMove(t44, t34, t24, t14, blocks);
-                doAdd(t44, t34, blocks);
-                beforeMove(t44, t34, t24, t14, blocks);
-                doAdd(t34, t24, blocks);
-                beforeMove(t44, t34, t24, t14, blocks);
-                doAdd(t24, t14, blocks);
+                doAll(textViews.get(12), textViews.get(8), textViews.get(4), textViews.get(0),
+                        textViews.get(13), textViews.get(9), textViews.get(5), textViews.get(1),
+                        textViews.get(14), textViews.get(10), textViews.get(6), textViews.get(2),
+                        textViews.get(15), textViews.get(11), textViews.get(7), textViews.get(3), blocks);
             default:
                 break;
         }
@@ -270,6 +140,25 @@ public class Move {
             change ++;
             score += blocks.get(t1);
         }
+    }
+
+    static void doAGroup(TextView t11, TextView t12, TextView t13, TextView t14, Map<TextView, Integer> blocks) {
+        beforeMove(t11, t12, t13, t14, blocks);
+        doAdd(t11, t12, blocks);
+        beforeMove(t11, t12, t13, t14, blocks);
+        doAdd(t12, t13, blocks);
+        beforeMove(t11, t12, t13, t14, blocks);
+        doAdd(t13, t14, blocks);
+    }
+
+    static void doAll(TextView t11, TextView t12, TextView t13, TextView t14,
+                      TextView t21, TextView t22, TextView t23, TextView t24,
+                      TextView t31, TextView t32, TextView t33, TextView t34,
+                      TextView t41, TextView t42, TextView t43, TextView t44, Map<TextView, Integer> blocks) {
+        doAGroup(t11, t12, t13, t14, blocks);
+        doAGroup(t21, t22, t23, t24, blocks);
+        doAGroup(t31, t32, t33, t34, blocks);
+        doAGroup(t41, t42, t43, t44, blocks);
     }
 
 }
