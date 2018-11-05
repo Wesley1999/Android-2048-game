@@ -142,13 +142,13 @@ public class Move {
         }
     }
 
-    static void doAGroup(TextView t11, TextView t12, TextView t13, TextView t14, Map<TextView, Integer> blocks) {
-        beforeMove(t11, t12, t13, t14, blocks);
-        doAdd(t11, t12, blocks);
-        beforeMove(t11, t12, t13, t14, blocks);
-        doAdd(t12, t13, blocks);
-        beforeMove(t11, t12, t13, t14, blocks);
-        doAdd(t13, t14, blocks);
+    static void doAGroup(TextView t1, TextView t2, TextView t3, TextView t4, Map<TextView, Integer> blocks) {
+        beforeMove(t1, t2, t3, t4, blocks);
+        doAdd(t1, t2, blocks);
+        beforeMove(t1, t2, t3, t4, blocks);
+        doAdd(t2, t3, blocks);
+        beforeMove(t1, t2, t3, t4, blocks);
+        doAdd(t3, t4, blocks);
     }
 
     static void doAll(TextView t11, TextView t12, TextView t13, TextView t14,

@@ -45,7 +45,7 @@ public class Color {
                 case "1024":
                     textView.setBackgroundResource(R.color.c1024bg);
                     break;
-                case "my2048":
+                case "2048":
                     textView.setBackgroundResource(R.color.c2048bg);
                     break;
                 case "4096":
